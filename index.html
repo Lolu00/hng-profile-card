@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile card.css">
+</head>
+<body>
+    <article data-testid="test-profile-card">
+        <figure>
+            <img data-testid="test-user-avatar" src="profile card img jpg.jpg" alt="User Avatar">
+        </figure>
+        <header>
+            <h2 data-testid="test-user-name">omololu mubarak</h2>
+        </header>
+        <p data-testid="test-user-bio">I’m a Frontend Developer and HNG Intern driven by a passion for building clean, user-friendly web experiences. I thrive on learning, solving problems, and turning ideas into interactive products. My goal is to keep improving every day while contributing to impactful projects</p>
+        <p>Current time: <span data-testid="test-user-time"></span> milliseconds</p>
+        <nav data-testid="test-user-social-links">
+            <ul>
+                <li><a data-testid="test-user-social-twitter" href="https://twitter.com/dapo_olademeji" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                <li><a data-testid="test-user-social-linkedin" href="https://www.linkedin.com/in/mubarak-omololu-945b5b253/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a data-testid="test-user-social-github" href="https://github.com/Lolu00?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h3>Hobbies</h3>
+            <ul data-testid="test-user-hobbies">
+                <li>Reading books</li>
+                <li>working out </li>
+                <li>Playing football</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Dislikes</h3>
+            <ul data-testid="test-user-dislikes">
+                <li>Loud noises</li>
+                <li>Spicy food</li>
+                <li>Early mornings</li>
+            </ul>
+        </section>
+    </article>
+    <script>
+        const timeEl = document.querySelector('[data-testid="test-user-time"]');
+        function updateTime() {
+            timeEl.textContent = Date.now();
+        }
+        updateTime();
+        setInterval(updateTime, 1000); // Update every second
+    </script>
+</body>
+</html>

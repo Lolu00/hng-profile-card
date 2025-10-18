@@ -1,0 +1,184 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+article[data-testid="test-profile-card"] {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 20px;
+}
+
+article[data-testid="test-profile-card"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+header {
+    text-align: center;
+    width: 100%;
+}
+
+h2[data-testid="test-user-name"] {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #2d3748;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+figure {
+    margin: 0;
+}
+
+img[data-testid="test-user-avatar"] {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center 10%;
+    border: 3px solid #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+p[data-testid="test-user-bio"] {
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #4a5568;
+}
+
+p {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #718096;
+    text-align: center;
+}
+
+nav[data-testid="test-user-social-links"] {
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #667eea;
+    padding: 8px 16px;
+    border: 2px solid #667eea;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+nav a:hover, nav a:focus {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    outline: 2px solid #4c51bf;
+}
+
+section {
+    width: 100%;
+}
+
+section h3 {
+    margin-top: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #2d3748;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+ul[data-testid="test-user-hobbies"], ul[data-testid="test-user-dislikes"] {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul[data-testid="test-user-hobbies"] li::before {
+    content: "📖";
+    margin-right: 10px;
+}
+
+ul[data-testid="test-user-dislikes"] li::before {
+    content: "🚫";
+    margin-right: 10px;
+}
+
+li {
+    word-wrap: break-word;
+    margin-bottom: 8px;
+    padding-left: 25px;
+    color: #4a5568;
+    transition: color 0.3s;
+}
+
+li:hover {
+    color: #667eea;
+}
+
+@media (min-width: 480px) {
+    article[data-testid="test-profile-card"] {
+        max-width: 500px;
+        padding: 35px;
+    }
+
+    img[data-testid="test-user-avatar"] {
+        width: 130px;
+        height: 130px;
+    }
+
+    h2[data-testid="test-user-name"] {
+        font-size: 2.4em;
+    }
+}
+
+@media (min-width: 768px) {
+    article[data-testid="test-profile-card"] {
+        max-width: 500px;
+        padding: 40px;
+    }
+
+    img[data-testid="test-user-avatar"] {
+        width: 140px;
+        height: 140px;
+    }
+
+    h2[data-testid="test-user-name"] {
+        font-size: 2.6em;
+    }
+}
