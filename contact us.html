@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about us.html">About</a></li>
+            <li><a href="contact us.html">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Contact Us</h1>
+        <form data-testid="test-contact-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" data-testid="test-contact-name" required aria-describedby="test-contact-error-name">
+            <div data-testid="test-contact-error-name" class="error-message" aria-live="polite"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" data-testid="test-contact-email" required aria-describedby="test-contact-error-email">
+            <div data-testid="test-contact-error-email" class="error-message" aria-live="polite"></div>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" data-testid="test-contact-subject" required aria-describedby="test-contact-error-subject">
+            <div data-testid="test-contact-error-subject" class="error-message" aria-live="polite"></div>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" data-testid="test-contact-message" required aria-describedby="test-contact-error-message"></textarea>
+            <div data-testid="test-contact-error-message" class="error-message" aria-live="polite"></div>
+
+            <button type="submit" data-testid="test-contact-submit">Send Message</button>
+            <div data-testid="test-contact-success" class="success-message" aria-live="polite"></div>
+        </form>
+    </main>
+    <script>
+        const form = document.querySelector('[data-testid="test-contact-form"]');
+        const nameInput = document.querySelector('[data-testid="test-contact-name"]');
+        const emailInput = document.querySelector('[data-testid="test-contact-email"]');
+        const subjectInput = document.querySelector('[data-testid="test-contact-subject"]');
+        const messageInput = document.querySelector('[data-testid="test-contact-message"]');
+        const successMessage = document.querySelector('[data-testid="test-contact-success"]');
+
+        const errorElements = {
+            name: document.querySelector('[data-testid="test-contact-error-name"]'),
+            email: document.querySelector('[data-testid="test-contact-error-email"]'),
+            subject: document.querySelector('[data-testid="test-contact-error-subject"]'),
+            message: document.querySelector('[data-testid="test-contact-error-message"]')
+        };
+
+        function clearErrors() {
+            Object.values(errorElements).forEach(el => {
+                el.textContent = '';
+                el.style.display = 'none';
+            });
+            successMessage.textContent = '';
+            successMessage.style.display = 'none';
+        }
+
+        function showError(field, message) {
+            errorElements[field].textContent = message;
+            errorElements[field].style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
+
+            let isValid = true;
+
+            // Validate name
+            if (nameInput.value.trim() === '') {
+                showError('name', 'Full name is required.');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput.value.trim() === '') {
+                showError('email', 'Email is required.');
+                isValid = false;
+            } else if (!emailRegex.test(emailInput.value)) {
+                showError('email', 'Please enter a valid email address.');
+                isValid = false;
+            }
+
+            // Validate subject
+            if (subjectInput.value.trim() === '') {
+                showError('subject', 'Subject is required.');
+                isValid = false;
+            }
+
+            // Validate message
+            if (messageInput.value.trim() === '') {
+                showError('message', 'Message is required.');
+                isValid = false;
+            } else if (messageInput.value.trim().length < 10) {
+                showError('message', 'Message must be at least 10 characters long.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                showSuccess('Thank you! Your message has been sent successfully.');
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>
