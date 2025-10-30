@@ -13,7 +13,7 @@ This is a simple profile card component built with HTML and CSS, created as part
 
 ## Live Demo
 
-[https://github.com/Lolu00/hng-profile-card.git]
+[https://lolu00.github.io/hng-profile-card/]
 
 ---
 
